@@ -22,7 +22,7 @@ export class EmployeeComponent implements OnInit {
   });
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.employeeForm = this.formBuilder.group({
