@@ -7,6 +7,7 @@ import {
   MaxLengthValidator,
   Validators,
 } from '@angular/forms';
+import { DataServiceService } from 'src/app/data-service.service';
 import { Details } from 'src/app/models/details';
 
 @Component({
@@ -15,16 +16,22 @@ import { Details } from 'src/app/models/details';
   styleUrls: ['./employee.component.css'],
 })
 export class EmployeeComponent implements OnInit {
+  employeeArr: Details[] = [];
+  
   employeeForm: FormGroup = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     email: new FormControl(''),
   });
-  submitted = false;
-
-  constructor(private formBuilder: FormBuilder) { }
+  submitted: boolean = false;
+  isShowing: boolean = true;
+  constructor(
+    private formBuilder: FormBuilder,
+    private dataService: DataServiceService
+  ) {}
 
   ngOnInit(): void {
+    this.employeeArr = this.dataService.getemployees();
     this.employeeForm = this.formBuilder.group({
       firstName: [
         '',
@@ -58,7 +65,9 @@ export class EmployeeComponent implements OnInit {
     }
 
     console.log(JSON.stringify(this.employeeForm.value, null, 2));
+    
   }
+
 
   onReset(): void {
     this.submitted = false;

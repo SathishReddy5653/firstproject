@@ -1,6 +1,6 @@
 export interface Details {
-
-    firstname:string;
-    lastname:string;
-    email:string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  id?: string;
 }
