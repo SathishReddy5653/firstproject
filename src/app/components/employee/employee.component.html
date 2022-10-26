@@ -17,6 +17,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="co1">Id</th>
       <th scope="co1">First Name</th>
       <th scope="co1">Last Name</th>
       <th scope="co1">Email id</th>
@@ -24,11 +25,13 @@
       <th scope="co1">Action</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td>sathish</td>
-      <td>Reddy</td>
-      <td>sathish@gmail.com</td>
+  <tbody *ngIf="isShowing" >
+    
+    <tr *ngFor="let employee of employeeArr; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{employee.firstName}}</td>
+      <td>{{employee.lastName}}</td>
+      <td>{{employee.email}}</td>
       <td>
         <button
           type="button"
